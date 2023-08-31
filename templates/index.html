@@ -1,0 +1,43 @@
+<html>
+    <head>
+<title>crud</title>
+<body>
+<div>
+    <form method='POST'>
+        {% csrf_token %}
+        {{ abc }}
+        <input type='submit' name='submit'/>
+    </form>
+    <div>
+      <h1> students tables</h1>  
+      <table border='1px' style='width:100%'>
+        <tr>
+            <th>ID </th>
+            <th>NAME </th>
+            <th>AGE </th>
+            <th>MOBILE </th>
+            <th> EMAIL </th>
+            <th> TRADE  </th>
+            <th> LOCATION </th>
+            <th> OPERATION</th>
+        </tr>
+{% for i in data %}
+<tr>
+    <td>{{i.id}}</td>
+    <td>{{i.Name}}</td>
+    <td>{{i.Age}}</td>
+    <td>{{i.Mobile}}</td>
+     <td>{{i.Email}}</td>
+     <td>{{i.Trade}}</td>
+     <td>{{i.Location}}</td>
+<td> <a href="{% url 'update' i.id %}"> UPDATE </a>||
+     <a href="{% url 'delete' i.id %}"> DELETE </a>
+    </td>
+</tr>
+{% endfor %} 
+      </table>
+    </div>
+</div>    
+</body>
+    </head>
+    </html>
